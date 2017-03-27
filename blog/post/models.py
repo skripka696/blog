@@ -19,9 +19,10 @@ class Tag(models.Model):
 
 class Post(models.Models):
     title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     content = models.TextField()
     category = models.ForeignKey(Category)
-    tag = models.ForeignKey(Tag)
+    tag = models.ManyToManyField(Tag)
 
 
 class Comment(models.Model):
