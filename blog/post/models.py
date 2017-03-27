@@ -17,7 +17,7 @@ class Tag(models.Model):
     title = models.CharField(max_length=100)
 
 
-class Post(models.Models):
+class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True, null=True)
     content = models.TextField()
@@ -32,3 +32,6 @@ class Comment(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class MPTTMeta:
+        order_insertion_by = ['title']
