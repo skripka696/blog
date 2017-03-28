@@ -4,4 +4,4 @@ from post.models import Post
 
 
 class User(AbstractUser):
-    favorites = models.ManyToManyField(Post)
+    favorites = models.ManyToManyField(Post, blank=True, null=True)
