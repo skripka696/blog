@@ -1,0 +1,14 @@
+{% extends 'base_content.html' %}
+{% load mptt_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <a href="{% url 'post_detail' post.pk%}">{{post.title}}</a>
+    {% endfor %}
+
+{% endblock %}

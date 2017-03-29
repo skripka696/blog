@@ -1,4 +1,5 @@
 {% extends 'base_content.html' %}
+{% load mptt_tags %}
 
 {% block title %}Login{% endblock %}
 
@@ -6,7 +7,17 @@
 {% endblock %}
 
 {% block content %}
-    {% for category in category_list%}
-        {{category}}
-    {% endfor%}
+    {% recursetree nodes %}
+        <li>
+            <a href="{% url 'category_detail_list' node.id %}">{{node.id}} - {{ node.name }}
+            </a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    <a href="#">{{ children }}</a>
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+
+
 {% endblock %}
