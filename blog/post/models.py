@@ -4,7 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField(max_length=50)
     parent = TreeForeignKey('self', null=True, blank=True,
                             related_name="children", db_index=True)
@@ -12,9 +12,15 @@ class Category(models.Model):
     class MPTTMeta:
         order_insertion_by = ['name']
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class Post(models.Model):
@@ -24,8 +30,11 @@ class Post(models.Model):
     category = models.ForeignKey(Category)
     tag = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return self.title
 
-class Comment(models.Model):
+
+class Comment(MPTTModel):
     title = models.CharField(max_length=100)
     parent = TreeForeignKey('self', null=True, blank=True,
                             related_name="children", db_index=True)
@@ -35,3 +44,6 @@ class Comment(models.Model):
 
     class MPTTMeta:
         order_insertion_by = ['title']
+
+    def __str__(self):
+        return self.title

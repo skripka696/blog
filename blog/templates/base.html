@@ -15,10 +15,18 @@
 <body>
     <div>
         <ul class="nav nav-tabs">
-            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="{% url 'category_list' %}">Last Posts</a></li>
+            {% if user.is_authenticated %}
+                <li role="presentation"><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li role="presentation"><a href="{% url 'login' %}">LogIn</a></li>
+                <li role="presentation"><a href="{% url 'registr' %}">Registration</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+        {% block sidebar%}
+        {% endblock %}
         {% block content %}
         {% endblock %}
     </div>

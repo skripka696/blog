@@ -6,6 +6,7 @@ from blog.settings import RECAPTCHA_PRIVATE_KEY
 import requests
 import json
 
+
 class BootstrapStyleForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
