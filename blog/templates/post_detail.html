@@ -1,12 +1,21 @@
 {% extends 'base_content.html' %}
 {% load mptt_tags %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Detail{% endblock %}
 
 {% block js %}
 {% endblock %}
 
 {% block content %}
-{{post.title}}
+<div class="post_title">
+    {{post.title}}
+</div>
+<div class="post_detail_content">
+    {{post.content}}
+</div>
+<div class="info">
+    <div class="tag_lists">Tags:{{post.tag}}</div>
+    <div class="category_list">Category: {{post.category.name}}</div>
+</div>
 
 {% endblock %}

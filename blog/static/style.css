@@ -14,5 +14,23 @@
     width: 70%;
     height: 200px;
     overflow: hidden;
+}
 
+.post_created_time{
+    margin: 0px;
+}
+
+.post_obj{
+    margin-top: 25px;
+    background-color: #efefef;
+    text-align: left;
+    font-size: smaller;
+}
+
+.tag_lists{
+    float: left;
+}
+
+.category_list{
+    float: right;
 }

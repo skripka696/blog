@@ -8,8 +8,11 @@
 
 {% block content %}
     {% for post in posts %}
-        <a href="{% url 'post_detail' post.pk%}" class="post_title">{{post.title}}</a>
-        <p class="post_content">{{post.content}}</p>
+        <div class="post_obj">
+            <p class="post_created_time">{{post.created}}</p>
+            <a href="{% url 'post_detail' post.pk%}" class="post_title">{{post.title}}</a>
+            <p class="post_content">{{post.content}}</p>
+        </div>
     {% endfor %}
 
 {% endblock %}

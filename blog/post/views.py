@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from post.models import Category, Post
+from post.models import Category, Post, Comment
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -29,8 +29,16 @@ class PostDetailView(DetailView):
     template_name = 'post_detail.html'
 
 
-
 class PostView(ListView):
-    pass
+    model = Post
+    template_name = 'post_list'
+
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.all()
+        return render(request, self.template_name, {'posts': posts})
+
+
+class CommentView(ListView):
+    model = Comment
 
 
