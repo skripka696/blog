@@ -8,7 +8,8 @@
 
 {% block content %}
     {% for post in posts %}
-        <a href="{% url 'post_detail' post.pk%}">{{post.title}}</a>
+        <a href="{% url 'post_detail' post.pk%}" class="post_title">{{post.title}}</a>
+        <p class="post_content">{{post.content}}</p>
     {% endfor %}
 
 {% endblock %}

@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="list-group">
     {% recursetree nodes %}
-        <li>
-            <a href="{% url 'category_detail_list' node.id %}">{{node.id}} - {{ node.name }}
+        <li class="tree_item">
+            <a href="{% url 'category_detail_list' node.id %}"> {{ node.name }}
             </a>
             {% if not node.is_leaf_node %}
                 <ul class="children">
@@ -18,6 +19,6 @@
             {% endif %}
         </li>
     {% endrecursetree %}
-
+</div>
 
 {% endblock %}
